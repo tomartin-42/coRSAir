@@ -15,7 +15,10 @@ COMPILER  = gcc
 
 # Folders
 LIBFT_DIR = ./libft/
-OBJ_DIR = obj/
+OBJ_DIR 	= obj/
+
+# Libft linkers
+LNK 			= -L $(LIBFT_DIR) -lft
 
 # Files
 SRC = main.c

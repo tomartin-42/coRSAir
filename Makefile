@@ -9,12 +9,12 @@ RESET = \033[0m
 
 NAME = coRSAir
 
-FLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 SANITIZE = -g3 -fsanitize=address
-COMPILER = gcc
+CC = gcc
 
 # Folders
-LIBFT_DIR = ./libft/
+LIBFT_DIR = libft/
 INC_DIR = inc/
 SRC_DIR = src/
 OBJ_DIR = obj/
@@ -26,7 +26,7 @@ LIBFT = $(LIBFT_DIR)libft.a
 LNK = -L$(LIBFT_DIR) -lft
 
 # Files
-SRC_FILES = main.c
+SRC_FILES = corsair.c
 SRC = $(addprefix $(SRC_DIR),$(SRC_FILES))
 
 OBJ_FILES = $(SRC_FILES:.c=.o)
@@ -38,11 +38,11 @@ all: $(NAME)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
-	@$(COMPILER) $(FLAGS) $(SANITIZE) -I$(INC_DIR) -I$(LIBFT_DIR) -c $< -o $@
+	@$(CC) $(CFLAGS) $(SANITIZE) -I$(INC_DIR) -I$(LIBFT_DIR) -c $< -o $@
 
 $(NAME): $(OBJ)
 	@make -C $(LIBFT_DIR)
-	@$(COMPILER) $(FLAGS) $(LNK) $(OBJ) -o $(NAME)
+	@$(CC) $(CFLAGS) $(LNK) $(OBJ) $(LIBFT) -o $(NAME)
 	@echo "$(GRN)$(NAME) has been compiled successfully!$(RESET)"
 
 $(OBJ_DIR):

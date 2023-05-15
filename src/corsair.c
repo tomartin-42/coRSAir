@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "corsair.h"
 
 int main(void) {

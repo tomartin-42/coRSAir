@@ -10,6 +10,7 @@ RESET = \033[0m
 NAME = coRSAir
 
 CFLAGS = -Wall -Wextra -Werror
+RSAFLAGS = -lssl -lcrypto
 SANITIZE = -g3 -fsanitize=address
 CC = gcc
 
@@ -18,12 +19,15 @@ LIBFT_DIR = libft/
 INC_DIR = inc/
 SRC_DIR = src/
 OBJ_DIR = obj/
+RSA_INC = -I/Users/tomartin/homebrew/Cellar/openssl@3/3.1.0/include/
 
 # Paths
 LIBFT = $(addprefix $(LIBFT_DIR), libft.a)
 
 # Libft linkers
 LNK = -L$(LIBFT_DIR) -lft
+RSA_LNK = -L/Users/tomartin/homebrew/Cellar/openssl@3/3.1.0/lib
+
 
 # Files
 SRC_FILES = corsair.c
@@ -38,12 +42,13 @@ all: $(NAME)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
-	@$(CC) $(CFLAGS) -I$(INC_DIR) -I$(LIBFT_DIR) -o $@ -c $<
+	@$(CC) $(CFLAGS) -I$(INC_DIR) -I$(LIBFT_DIR) -I$(RSA_INC) -o $@ -c $<
 	@echo "$(ORG)Compiling $<$(RESET)"
 
 $(NAME): $(OBJ)
 	@make -C $(LIBFT_DIR)
-	@$(CC) $(CFLAGS) $(SANITIZE) $(LNK) $(OBJ) $(LIBFT) -o $(NAME)
+	@$(CC) $(CFLAGS) $(RSAFLAGS) $(RSA_LNK) $(SANITIZE)\
+		$(LNK) $(OBJ) $(LIBFT) -o $(NAME)
 	@echo "$(GRN)$(NAME) has been compiled successfully!$(RESET)"
 
 $(OBJ_DIR):

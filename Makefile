@@ -20,7 +20,7 @@ SRC_DIR = src/
 OBJ_DIR = obj/
 
 # Paths
-LIBFT = $(LIBFT_DIR)libft.a
+LIBFT = $(addprefix $(LIBFT_DIR), libft.a)
 
 # Libft linkers
 LNK = -L$(LIBFT_DIR) -lft
@@ -38,11 +38,12 @@ all: $(NAME)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
-	@$(CC) $(CFLAGS) $(SANITIZE) -I$(INC_DIR) -I$(LIBFT_DIR) -c $< -o $@
+	@$(CC) $(CFLAGS) -I$(INC_DIR) -I$(LIBFT_DIR) -o $@ -c $<
+	@echo "$(ORG)Compiling $<$(RESET)"
 
 $(NAME): $(OBJ)
 	@make -C $(LIBFT_DIR)
-	@$(CC) $(CFLAGS) $(LNK) $(OBJ) $(LIBFT) -o $(NAME)
+	@$(CC) $(CFLAGS) $(SANITIZE) $(LNK) $(OBJ) $(LIBFT) -o $(NAME)
 	@echo "$(GRN)$(NAME) has been compiled successfully!$(RESET)"
 
 $(OBJ_DIR):
@@ -59,3 +60,11 @@ fclean: clean
 	@echo "$(YEL)$(NAME) executable has been removed!$(RESET)"
 
 re: fclean all
+
+print:
+	@echo $(LNK)
+	@echo $(OBJ)
+	@echo $(SRC)
+	@echo $(LIBFT)
+	@echo $(INC_DIR)
+	@echo $(LIBFT_DIR)

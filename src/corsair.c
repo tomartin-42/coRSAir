@@ -1,9 +1,10 @@
-#include "corsair.h"
 #include <stdio.h>
+#include "corsair.h"
 
-int mian(void) {
-  char *str = "HOLA";
+int main(void) {
+
+  char* str = "HOLA";
 
   printf("%s - %ld", str, ft_strlen(str));
-  return (0);
+  return 0;
 }

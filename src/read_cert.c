@@ -12,13 +12,13 @@ void read_cert(t_corsair *s_data) {
     }
     while (get_next_line(fd, buf) > 0) {}
     
-    s_data->cert = d2i_X509(NULL, (const unsigned char **)&buf[0], bytes_read);
-    if (cert == NULL) {
+    s_data->cert = d2i_X509(NULL, (const unsigned char **)&buf[0], ft_strlen(buf[0]));
+    if (s_data->cert == NULL) {
         printf("Error al parsear el certificado\n");
-        close(cert_file);
-        return 1;
+        close(fd);
+        return ;
     }
-
+    close(fd);
 }
 
 void main_read_cert(t_corsair **s_data) {

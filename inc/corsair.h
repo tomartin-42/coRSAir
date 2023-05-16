@@ -3,6 +3,7 @@
 
 #include "../libft/libft.h"
 #include "read_cert.h"
+#include "debug.h"
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>

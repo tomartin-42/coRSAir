@@ -30,7 +30,8 @@ RSA_LNK = -L/Users/tomartin/homebrew/Cellar/openssl@3/3.1.0/lib
 
 
 # Files
-SRC_FILES = corsair.c
+SRC_FILES = corsair.c read_cert.c
+
 SRC = $(addprefix $(SRC_DIR),$(SRC_FILES))
 
 OBJ_FILES = $(SRC_FILES:.c=.o)

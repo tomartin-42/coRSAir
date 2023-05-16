@@ -1,9 +1,18 @@
 #include "corsair.h"
 
-int main(void) {
+int main(int argc, char **argv) {
 
-  char* str = "HOLA";
+  t_corsair **s_data;
 
-  printf("%s - %ld", str, ft_strlen(str));
-  return 0;
+  s_data = (t_corsair **)malloc(sizeof(t_corsair*) * argc);
+  s_data[argc] = NULL;
+
+  for (int i = 1; i < argc; i++) {
+    s_data[i - 1] = (t_corsair*)malloc(sizeof(t_corsair));
+    s_data[i - 1]->filename = argv[i];
+  }
+  s_data[argc - 1] = NULL;
+  for (int i = 0; s_data[i] != NULL; i++) {
+    printf("Filename %s\n", s_data[i]->filename);
+  }
 }

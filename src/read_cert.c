@@ -22,7 +22,6 @@ void read_cert(t_corsair *s_data) {
 void main_read_cert(t_corsair **s_data) {
     int i = 0;
     while (s_data[i] != NULL) {
-        printf("HOLA\n");
         read_cert(s_data[i]);
         ++i;
     }

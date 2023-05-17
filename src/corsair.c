@@ -12,7 +12,6 @@ int main(int argc, char **argv) {
     s_data[i - 1]->filename = argv[i];
   }
   s_data[argc - 1] = NULL;
-  for (int i = 0; s_data[i] != NULL; i++) {
-    printf("Filename %s\n", s_data[i]->filename);
-  }
+  main_read_cert(s_data); 
+  print_s_data(s_data);
 }

@@ -1,30 +1,30 @@
 #include "../inc/corsair.h"
 
 void read_cert(t_corsair *s_data) {
-    usigned char    **buf;
-    int             fd;
+     // Crear un objeto BIO para el archivo de clave pública
+    BIO *pubkey_bio = BIO_new_file(s_data->filename, "r");
+    if (pubkey_bio == NULL) {
+        printf("Error al abrir el archivo de la clave pública\n");
+        s_data->pkey = NULL;
+        return ;
+    }
 
-    fd = open(s_data->filename, O_RDONLY);
-    if (fd == -1) {
-        printf("Error opening file %s\n", s_data->filename);
-        s_data->cert = NULL;
+    // Leer la clave pública desde el objeto BIO
+    s_data->pkey = PEM_read_bio_PUBKEY(pubkey_bio, NULL, NULL, NULL);
+    if (s_data->pkey == NULL) {
+        printf("Error al leer la clave pública\n");
+        BIO_free(pubkey_bio);
         return ;
     }
-    while (get_next_line(fd, buf) > 0) {}
-    
-    s_data->cert = d2i_X509(NULL, (const unsigned char **)&buf[0], ft_strlen(buf[0]));
-    if (s_data->cert == NULL) {
-        printf("Error al parsear el certificado\n");
-        close(fd);
-        return ;
-    }
-    close(fd);
+    BIO_free(pubkey_bio);
 }
 
 void main_read_cert(t_corsair **s_data) {
     int i = 0;
     while (s_data[i] != NULL) {
+        printf("HOLA\n");
         read_cert(s_data[i]);
+        ++i;
     }
 
 }

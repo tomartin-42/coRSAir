@@ -12,7 +12,7 @@ BN_CTX_free(ctx);
 */
 void decoder(t_corsair **s_data, int i) {
     for (int j = i + 1; s_data[j] != NULL; ++j) {
-        if (s_data[j]->n == NULL || s_data[j]->n == 1) {
+        if (s_data[j]->n == NULL || !BN_cmp(s_data[j]->n, BN_value_one())) {
             BIGNUM *gcd = BN_new();
             BN_CTX *ctx = BN_CTX_new();
             BN_gcd(gcd, s_data[i]->n, s_data[j]->n, ctx);

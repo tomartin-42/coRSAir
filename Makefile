@@ -28,9 +28,8 @@ LIBFT = $(addprefix $(LIBFT_DIR), libft.a)
 LNK = -L$(LIBFT_DIR) -lft
 RSA_LNK = -L/Users/tomartin/homebrew/Cellar/openssl@3/3.1.0/lib
 
-
 # Files
-SRC_FILES = corsair.c read_cert.c debug.c
+SRC_FILES = corsair.c read_cert.c debug.c decoder.c
 
 SRC = $(addprefix $(SRC_DIR),$(SRC_FILES))
 
@@ -43,7 +42,7 @@ all: $(NAME)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
-	@$(CC) $(CFLAGS) -I$(INC_DIR) -I$(LIBFT_DIR) -I$(RSA_INC) -o $@ -c $<
+	@$(CC) $(CFLAGS) -I$(INC_DIR) -I$(LIBFT_DIR) $(RSA_INC) -o $@ -c $<
 	@echo "$(ORG)Compiling $<$(RESET)"
 
 $(NAME): $(OBJ)

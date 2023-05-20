@@ -19,7 +19,6 @@ int main(int argc, char **argv) {
 
   s_data[argc - 1] = NULL;
   main_read_cert(s_data);
-  printf("HOLA\n");
   main_decoder(s_data);
-  print_s_ones(s_data);
+  print_only_break(s_data);
 }

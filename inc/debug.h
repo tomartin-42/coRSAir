@@ -1,9 +1,10 @@
 #ifndef _DEBUG_H_
-# define _DEBUG_H_
+#define _DEBUG_H_
 
-# include "corsair.h"
+#include "corsair.h"
 
-    void print_s_data(t_corsair **s_data);
-    void print_s_ones(t_corsair **s_data);
+void print_s_data(t_corsair **s_data);
+void print_s_ones(t_corsair **s_data);
+void print_only_break(t_corsair **ss_data);
 
 #endif

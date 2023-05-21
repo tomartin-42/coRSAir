@@ -1,5 +1,7 @@
 #include "corsair.h"
 
+void free_strut(t_corsair **s_data) { (void)s_data; }
+
 int main(int argc, char **argv) {
 
   t_corsair **s_data;

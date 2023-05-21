@@ -28,4 +28,6 @@ typedef struct s_corsair {
 #include <stdlib.h>
 #include <unistd.h>
 
+void free_strut(t_corsair **s_data);
+
 #endif

@@ -1,19 +1,10 @@
 #include "../inc/decoder.h"
 #include "corsair.h"
-/*
-BIGNUM *gcd = BN_new();
-BN_CTX *ctx = BN_CTX_new();
 
-BN_gcd(gcd, a, b, ctx);
+void get_private_key(t_corsair *s_data) { (void)s_data; }
 
-// Utiliza el valor de gcd como desees
-
-BN_free(gcd);
-BN_CTX_free(ctx);
-*/
 void find_q(t_corsair *s_data) {
   BN_CTX *ctx = BN_CTX_new();
-  s_data->q = BN_new();
   s_data->q = NULL;
 
   BN_div(s_data->q, NULL, s_data->n, s_data->p, ctx);
@@ -53,6 +44,7 @@ void main_decoder(t_corsair **s_data) {
   while (s_data[i] != NULL) {
     if (s_data[i]->flag == 1) {
       find_q(s_data[i]);
+      get_private_key(s_data[i]);
     }
     ++i;
   }

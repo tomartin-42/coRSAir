@@ -14,8 +14,8 @@ typedef struct s_corsair {
   BIGNUM *e;
   BIGNUM *p;
   BIGNUM *q;
+  BIGNUM *private_key;
   int8_t flag;
-
 } t_corsair;
 
 #include "../libft/libft.h"
@@ -28,6 +28,6 @@ typedef struct s_corsair {
 #include <stdlib.h>
 #include <unistd.h>
 
-void free_strut(t_corsair **s_data);
+void free_struct(t_corsair **s_data);
 
 #endif

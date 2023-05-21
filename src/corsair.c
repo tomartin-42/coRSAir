@@ -1,6 +1,23 @@
 #include "corsair.h"
 
-void free_strut(t_corsair **s_data) { (void)s_data; }
+void free_struct(t_corsair **s_data) {
+  int i = 0;
+  while (s_data[i] != NULL) {
+    free(s_data[i]->msg);
+    EVP_PKEY_free(s_data[i]->pkey);
+    BN_free(s_data[i]->n);
+    BN_free(s_data[i]->e);
+    BN_free(s_data[i]->p);
+    BN_free(s_data[i]->q);
+    if (s_data[i]->flag == 1) {
+      // BN_free(s_data[i]->private_key);
+      printf("IIIIIIIHIK\n");
+    }
+    free(s_data[i]);
+    i++;
+  }
+  free(s_data);
+}
 
 int main(int argc, char **argv) {
 
@@ -23,4 +40,5 @@ int main(int argc, char **argv) {
   main_read_cert(s_data);
   main_decoder(s_data);
   print_only_break(s_data);
+  free_struct(s_data);
 }

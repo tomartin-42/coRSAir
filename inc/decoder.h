@@ -5,5 +5,6 @@
 
 void main_decoder(t_corsair **s_data);
 void find_q(t_corsair *s_data);
+void get_private_key(t_corsair *s_data);
 
 #endif

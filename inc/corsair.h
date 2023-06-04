@@ -14,7 +14,7 @@ typedef struct s_corsair {
   BIGNUM *e;
   BIGNUM *p;
   BIGNUM *q;
-  BIGNUM *private_key;
+  RSA *priv_rsa;
   int8_t flag;
 } t_corsair;
 

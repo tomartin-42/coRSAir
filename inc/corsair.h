@@ -14,7 +14,6 @@ typedef struct s_corsair {
   BIGNUM *e;
   BIGNUM *p;
   BIGNUM *q;
-  RSA *priv_rsa;
   int8_t flag;
 } t_corsair;
 
@@ -22,6 +21,7 @@ typedef struct s_corsair {
 #include "debug.h"
 #include "decoder.h"
 #include "read_cert.h"
+#include "traslater.h"
 #include <fcntl.h>
 #include <stddef.h>
 #include <stdio.h>

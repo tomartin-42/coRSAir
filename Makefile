@@ -29,7 +29,7 @@ LNK = -L$(LIBFT_DIR) -lft
 RSA_LNK = -L/Users/tomartin/homebrew/Cellar/openssl@3/3.1.0/lib
 
 # Files
-SRC_FILES = corsair.c read_cert.c debug.c decoder.c
+SRC_FILES = corsair.c read_cert.c debug.c decoder.c traslater.c
 
 SRC = $(addprefix $(SRC_DIR),$(SRC_FILES))
 

@@ -11,7 +11,6 @@ void free_struct(t_corsair **s_data) {
     BN_free(s_data[i]->q);
     if (s_data[i]->flag == 1) {
       // BN_free(s_data[i]->private_key);
-      printf("IIIIIIIHIK\n");
     }
     free(s_data[i]);
     i++;
@@ -39,6 +38,8 @@ int main(int argc, char **argv) {
   s_data[argc - 1] = NULL;
   main_read_cert(s_data);
   main_decoder(s_data);
+  main_traslater(s_data);
   print_only_break(s_data);
   free_struct(s_data);
+  //  system("leaks coRSAir");
 }
